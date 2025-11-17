@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "636820893822",
+    "project_id": "provaandre-75e2c",
+    "storage_bucket": "provaandre-75e2c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636820893822:android:ccc7841d56578c0319282f",
+        "android_client_info": {
+          "package_name": "com.example.prova"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDot6YC2CKP3UzttEYg9OrVuLH6zcm9cJQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
