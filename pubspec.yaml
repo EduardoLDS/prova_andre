@@ -43,7 +43,9 @@ dependencies:
   
   cupertino_icons: ^1.0.8
 
-  
+ 
+  fl_chart: ^0.69.0
+
   # Adicione os pacotes dos serviços que vai usar:
 
 

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:prova/pages/abastecimentos/abastecimento_list_page.dart';
 import 'package:prova/pages/abastecimentos/abastecimento_form_page.dart';
 import 'package:prova/pages/veiculos_list_page.dart';
+import 'package:prova/pages/grafico_custos_page.dart';
 
 import '../services/auth_service.dart';
 import 'login_pages.dart';
@@ -44,113 +46,37 @@ class HomePage extends StatelessWidget {
                 ),
               ),
 
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                child: Material(
-                  color: Colors.blue.shade400,
-                  borderRadius: BorderRadius.circular(12),
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(12),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => VeiculosListPage()),
-                      );
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(14),
-                      child: Row(
-                        children: const [
-                          Icon(Icons.car_repair, color: Colors.white),
-                          SizedBox(width: 15),
-                          Text(
-                            "Meus Veículos",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+              _menuButton(
+                context,
+                color: Colors.blue.shade400,
+                icon: Icons.car_repair,
+                text: "Meus Veículos",
+                page: VeiculosListPage(),
               ),
 
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                child: Material(
-                  color: Colors.green.shade500,
-                  borderRadius: BorderRadius.circular(12),
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(12),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const AbastecimentoFormPage(),
-                        ),
-                      );
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(14),
-                      child: Row(
-                        children: const [
-                          Icon(Icons.local_gas_station, color: Colors.white),
-                          SizedBox(width: 15),
-                          Text(
-                            "Registrar Abastecimento",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+              _menuButton(
+                context,
+                color: Colors.green.shade500,
+                icon: Icons.local_gas_station,
+                text: "Registrar Abastecimento",
+                page: const AbastecimentoFormPage(),
               ),
 
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                child: Material(
-                  color: Colors.purple.shade400,
-                  borderRadius: BorderRadius.circular(12),
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(12),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const AbastecimentoListPage(),
-                        ),
-                      );
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(14),
-                      child: Row(
-                        children: const [
-                          Icon(Icons.receipt_long, color: Colors.white),
-                          SizedBox(width: 10),
-                          Text(
-                            "Historico de Abastecimentos",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+              _menuButton(
+                context,
+                color: Colors.purple.shade400,
+                icon: Icons.receipt_long,
+                text: "Histórico de Abastecimentos",
+                page: const AbastecimentoListPage(),
+                fontSize: 16,
+              ),
+
+              _menuButton(
+                context,
+                color: Colors.orange.shade400,
+                icon: Icons.bar_chart,
+                text: "Gráfico de Custos",
+                page: const GraficoCustosPorVeiculo(),
               ),
 
               const SizedBox(height: 20),
@@ -214,6 +140,47 @@ class HomePage extends StatelessWidget {
                   blurRadius: 8,
                   color: Colors.black,
                   offset: Offset(2, 2),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _menuButton(
+    BuildContext context, {
+    required Color color,
+    required IconData icon,
+    required String text,
+    required Widget page,
+    double fontSize = 18,
+  }) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      child: Material(
+        color: color,
+        borderRadius: BorderRadius.circular(12),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(12),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (_) => page));
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(14),
+            child: Row(
+              children: [
+                Icon(icon, color: Colors.white),
+                const SizedBox(width: 15),
+                Text(
+                  text,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: fontSize,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
