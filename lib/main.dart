@@ -17,6 +17,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(fontSize: 18),
+          titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+        appBarTheme: const AppBarTheme(centerTitle: true),
+      ),
       initialRoute: '/login',
       routes: {
         '/login': (context) => LoginPage(),
