@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:prova/pages/abastecimentos/abastecimento_list_page.dart';
 
 import '../services/auth_service.dart';
 import 'login_pages.dart';
@@ -61,6 +62,16 @@ class HomePage extends StatelessWidget {
                 );
               },
               child: Text("Gerenciar Veículos"),
+            ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => AbastecimentoListPage()),
+                );
+              },
+              child: Text("abastecimento"),
             ),
           ],
         ),

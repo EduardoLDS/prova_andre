@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 class AuthService {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
-  // Login
   Future<User?> signInWithEmailPassword(String email, String password) async {
     try {
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
@@ -37,15 +36,12 @@ class AuthService {
     }
   }
 
-  // Logout
   Future<void> signOut() async {
     await auth.signOut();
     print('Usuário deslogado.');
   }
 
-  // Usuário atual
   User? get currentUser => auth.currentUser;
 
-  // Status de autenticação (stream)
   Stream<User?> get authStateChanges => auth.authStateChanges();
 }

@@ -5,11 +5,9 @@ class VeiculosService {
   final user = FirebaseAuth.instance.currentUser;
   final FirebaseFirestore db = FirebaseFirestore.instance;
 
-  /// Referência da coleção do usuário logado
   CollectionReference get _colecao =>
       db.collection("users").doc(user!.uid).collection("veiculos");
 
-  /// Criar veículo
   Future<void> adicionarVeiculo({
     required String modelo,
     required String marca,
@@ -27,17 +25,14 @@ class VeiculosService {
     });
   }
 
-  /// Listar veículos (Stream para atualizar automaticamente no app)
   Stream<QuerySnapshot> listarVeiculos() {
     return _colecao.orderBy("createdAt", descending: true).snapshots();
   }
 
-  /// Atualizar veículo
   Future<void> atualizarVeiculo(String id, Map<String, dynamic> dados) async {
     await _colecao.doc(id).update(dados);
   }
 
-  /// Excluir veículo
   Future<void> deletarVeiculo(String id) async {
     await _colecao.doc(id).delete();
   }
