@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../services/auth_service.dart';
 import 'login_pages.dart';
+import 'veiculos_list_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -52,6 +53,15 @@ class HomePage extends StatelessWidget {
             ),
 
             const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => VeiculosListPage()),
+                );
+              },
+              child: Text("Gerenciar Veículos"),
+            ),
           ],
         ),
       ),
